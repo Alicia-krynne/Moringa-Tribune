@@ -80,7 +80,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'tribune',
         'USER': 'macrine',
-    'PASSWORD':'Alicemacrine!',
+        'PASSWORD':'Alicemacrine!',
+        'DISABLE_SERVER_SIDE_CURSORS': True,
     }
 }
 
