@@ -4,8 +4,8 @@ import datetime as dt
 
 # Create your views here.
 
-def welcome(request):
-    return render(request, 'welcome.html')
+#def welcome(request):
+    #return render(request, 'welcome.html')
 
 def news_of_day(request):
     date = dt.date.today()
