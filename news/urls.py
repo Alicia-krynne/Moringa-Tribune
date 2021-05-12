@@ -3,6 +3,6 @@ from . import views
 
 
 urlpatterns=[
-    path('index/',views.news_of_day,name='newsToday'),
-    path('archives/<past_date>/',views.past_days_news,name='pastNews'),
+    path('',views.news_today,name='newsToday'),
+    path('archives/<str:past_date>/',views.past_days_news,name='pastNews'),
 ]
