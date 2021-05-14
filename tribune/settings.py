@@ -14,6 +14,7 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
+import cloudinary
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,7 +43,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news.apps.NewsConfig',
     'bootstrap4',
+    'cloudinary', #add app
 ]
+
+#add app
+cloudinary.config(
+    cloud_name = 'macrine',
+    api_key = '689914659629972',
+    api_secret = 'wquzJbcEdqPH29g3ibW2fYmXRsU',  
+)
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
