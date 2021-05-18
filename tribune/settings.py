@@ -14,22 +14,18 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
-import cloudinary
+#import cloudinary
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'y5b2t@p$e-k157a@7hu9jgua6zw9*smxslm%6gjss$fyq+^l%x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+#DEBUG = config('DEBUG')
 
 
 # Application definition
@@ -44,15 +40,8 @@ INSTALLED_APPS = [
     'news.apps.NewsConfig',
     'bootstrap4',
     'tinymce',
-    'cloudinary', #add app
-]
 
-#add app
-cloudinary.config(
-    cloud_name = 'macrine',
-    api_key = '689914659629972',
-    api_secret = 'wquzJbcEdqPH29g3ibW2fYmXRsU',  
-)
+]
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL="/accounts/login/"
@@ -101,23 +90,23 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 if config('MODE')=="dev":
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('tribune'),
-        'USER': config('macrine'),
-        'PASSWORD': config('Alicemacrine!'),
-        'HOST': config('127.0.0.1'),
-        'PORT': '',
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST'),
+            'PORT': '',
+        }
+        
     }
-    
-}
 # production
 else:
     DATABASES = {
         'default': dj_database_url.config(
-            default=config('DATABASE_URL')
+                default=config('DATABASE_URL')
         )
-    }
+        }
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
