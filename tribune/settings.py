@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'news.apps.NewsConfig',
     'bootstrap4',
+    'tinymce',
     'cloudinary', #add app
 ]
 
@@ -53,6 +54,8 @@ cloudinary.config(
     api_secret = 'wquzJbcEdqPH29g3ibW2fYmXRsU',  
 )
 
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL="/accounts/login/"
 
 
 MIDDLEWARE = [
